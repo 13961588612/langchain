@@ -17,7 +17,7 @@ load_dotenv()
 
 from langchain.tools import tool, StructuredTool
 from langchain.messages import HumanMessage, SystemMessage
-from langchain.chat_models import init_chat_model
+from model import getModel
 
 
 # ========== 1. @tool 装饰器: 最简单的工具 ==========
@@ -107,7 +107,7 @@ def demo_tool_binding():
     """演示将工具绑定到 LLM，让模型自主决定调用哪个工具"""
     print("\n=== 工具绑定 (Tool Binding) ===")
 
-    model = init_chat_model("openai:gpt-4o", temperature=0)
+    model = getModel(temperature=0)
     tools = [get_current_time, calculate, search_knowledge, weather_tool]
 
     # 绑定工具到模型

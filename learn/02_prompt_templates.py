@@ -12,14 +12,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from langchain.chat_models import init_chat_model
+from model import getModel
 from langchain_core.prompts import (
     ChatPromptTemplate,
     MessagesPlaceholder,
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
     FewShotChatMessagePromptTemplate,
-    PipelinePromptTemplate,
 )
 
 
@@ -113,7 +112,7 @@ def demo_few_shot():
         print(f"  [{type(msg).__name__}]: {msg.content}")
 
     # 实际调用模型
-    model = init_chat_model("openai:gpt-4o", temperature=0.3)
+    model = getModel(temperature=0.3)
     response = model.invoke(prompt_value)
     print(f"\n模型回复: {response.content}")
 
@@ -122,46 +121,26 @@ def demo_pipeline_prompt():
     """管道模板: 组合多个 Prompt 模板"""
     print("\n=== Pipeline Prompt 管道模板 ===")
 
-    # 第一步: 角色定义
-    persona_prompt = ChatPromptTemplate.from_messages([
-        ("system", "你是一个{persona}。"),
-    ])
+    # PipelinePromptTemplate 在新版 langchain-core 中已移除
+    # 推荐做法: 直接在 ChatPromptTemplate 中组合多个消息模板
 
-    # 第二步: 任务指令
-    task_prompt = ChatPromptTemplate.from_messages([
-        ("system", "你的任务是: {task}"),
+    full_prompt = ChatPromptTemplate.from_messages([
+        ("system", "你是一个{persona}。"),              # 角色定义
+        ("system", "你的任务是: {task}"),                # 任务指令
         MessagesPlaceholder(variable_name="chat_history", optional=True),
+        ("system", "请用 JSON 格式输出结果。"),          # 输出格式
         ("human", "{input}"),
     ])
 
-    # 第三步: 输出格式要求
-    format_prompt = ChatPromptTemplate.from_messages([
-        ("system", "请用 JSON 格式输出结果。"),
-    ])
-
-    # 组合为管道
-    full_prompt = PipelinePromptTemplate(
-        final_prompt=task_prompt,
-        pipeline_prompts=[
-            ("persona_block", persona_prompt),
-            ("format_block", format_prompt),
-        ],
-    )
-
-    # 注意: PipelinePromptTemplate 会自动将 pipeline_prompts 的变量
-    # 合并到 final_prompt 中
-    try:
-        prompt_value = full_prompt.invoke({
-            "persona": "代码审查专家",
-            "task": "审查以下代码的安全性",
-            "input": "def login(user): return eval(user.password)",
-        })
-        print("组合后的 System Messages:")
-        for msg in prompt_value.messages:
-            if hasattr(msg, "content"):
-                print(f"  [{type(msg).__name__}]: {msg.content[:100]}")
-    except Exception as e:
-        print(f"PipelinePrompt 示例（不同版本的 API 略有差异）: {e}")
+    prompt_value = full_prompt.invoke({
+        "persona": "代码审查专家",
+        "task": "审查以下代码的安全性",
+        "input": "def login(user): return eval(user.password)",
+    })
+    print("组合后的消息列表:")
+    for msg in prompt_value.messages:
+        if hasattr(msg, "content") and msg.content:
+            print(f"  [{type(msg).__name__}]: {msg.content[:100]}")
 
 
 if __name__ == "__main__":
