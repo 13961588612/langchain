@@ -21,13 +21,15 @@ d:\code\study\langchain\
 │   ├── 08_streaming.py               # 流式输出
 │   └── 09_agent_final.py             # ★ 综合验收 (v1 create_agent)
 │
-└── practice/                           # ← 实践项目（学习完后开始）
-    ├── README.md                       # 实践计划（8 阶段）
-    └── aethermind/                     # AetherMind 平台（阶段一已完成）
-        ├── docker-compose.yml
-        ├── 交付清单.md
-        ├── backend/  (FastAPI + DeepAgents + LangGraph)
-        └── frontend/ (Next.js + React + Tailwind)
+└── practice/                           # ← 实践项目
+    ├── README.md                       # 项目索引
+    ├── aethermind/                     # AetherMind 智能体平台（Phase 1 已完成）
+    │   ├── docker-compose.yml
+    │   ├── README.md
+    │   ├── backend/  (FastAPI + DeepAgents + LangGraph)
+    │   └── frontend/ (Next.js + React + Tailwind)
+    └── intentgate/                     # IntentGate 多通道卡片网关
+        └── ...
 ```
 
 ## 启动学习

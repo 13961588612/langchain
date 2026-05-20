@@ -1,0 +1,10 @@
+# 查询结果摘要 — text_notice
+template: text_notice
+slots:
+  title: "{{title}}"
+  desc: "{{desc}}"
+rows:
+  - keyname: "{{row1_key}}"
+    value: "{{row1_val}}"
+  - keyname: "{{row2_key}}"
+    value: "{{row2_val}}"
