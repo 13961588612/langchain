@@ -168,8 +168,8 @@ if __name__ == "__main__":
     demo_manual_tool_call()
     demo_tool_binding()
 
-    print("\n核心要点:")
-    print("1. @tool 装饰器快速定义工具，docstring 会被用作工具描述")
-    print("2. StructuredTool 支持带复杂参数 Schema 的工具")
-    print("3. model.bind_tools() 让 LLM 自主决定调用哪些工具")
-    print("4. 工具描述的质量直接影响 LLM 选择工具的正确性")
+    # print("\n核心要点:")
+    # print("1. @tool 装饰器快速定义工具，docstring 会被用作工具描述")
+    # print("2. StructuredTool 支持带复杂参数 Schema 的工具")
+    # print("3. model.bind_tools() 让 LLM 自主决定调用哪些工具")
+    # print("4. 工具描述的质量直接影响 LLM 选择工具的正确性")

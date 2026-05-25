@@ -154,7 +154,7 @@ def demo_lambda_in_chain():
 def demo_config_and_fallback():
     """链的配置和容错回退"""
     print("\n=== 配置与回退 ===")
-
+"""  """
     prompt = ChatPromptTemplate.from_template(
         "用一句话解释: {concept}"
     )
