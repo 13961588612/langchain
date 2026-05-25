@@ -29,6 +29,7 @@ docker-compose up -d
 | [阶段能力规划](../../docs/aethermind/05-阶段能力规划.md) | Phase 2–9 |
 | [IntentGate 集成](../../docs/aethermind/06-IntentGate集成.md) | IM 卡片对接 |
 | [企业加固规划](../../docs/aethermind/07-企业加固规划.md) | 延后批次 |
+| [对标 Hermes 与规划修订](../../docs/aethermind/09-对标Hermes与规划修订.md) | **Phase 排期权威** |
 | [实施与运维](../../docs/aethermind/08-实施与运维.md) | 部署与交付状态 |
 
 ## 相关项目

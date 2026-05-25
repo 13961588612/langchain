@@ -28,3 +28,4 @@ uvicorn intentgate.main:app --reload --port 8090
 | [卡片系统](../../docs/intentgate/05-卡片系统.md) | YAML 模板与 Runtime |
 | [Agent 后端对接](../../docs/intentgate/06-Agent后端对接.md) | AgentScope / AetherMind |
 | [实施与运维](../../docs/intentgate/07-实施与运维.md) | 部署与 checklist |
+| [代码文件说明](../../docs/intentgate/08-代码文件说明.md) | 文件清单与阅读顺序 |
