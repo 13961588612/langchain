@@ -5,38 +5,38 @@
 ## 项目结构总览
 
 ```
-d:\code\study\langchain\
+c:\code\langchain\
 ├── learn/                              # ← 学习项目（当前阶段）
 │   ├── README.md                       # 完整学习计划（4 阶段）
 │   ├── stage-1.md                      # 当前文件：阶段一指南
-│   ├── .env                            # API Key 配置
-│   ├── requirements.txt                # Python 依赖（v1.2.x）
-│   ├── 01_chat_models.py              # 多 Provider 模型切换
-│   ├── 02_prompt_templates.py         # Prompt 模板系统
-│   ├── 03_tools.py                    # 工具定义与使用
-│   ├── 04_chains_lcel.py             # LCEL 管道表达式
-│   ├── 05_memory.py                   # 对话记忆系统
-│   ├── 06_rag.py                      # RAG 检索增强生成
-│   ├── 07_callbacks.py               # 回调系统与追踪
-│   ├── 08_streaming.py               # 流式输出
-│   └── 09_agent_final.py             # ★ 综合验收 (v1 create_agent)
+│   └── langchain/                      # LangChain 阶段一练习
+│       ├── .env                        # API Key 配置
+│       ├── requirements.txt            # Python 依赖（v1.2.x）
+│       ├── model.py                    # 模型工厂
+│       ├── 01_chat_models.py           # 多 Provider 模型切换
+│       ├── 02_prompt_templates.py      # Prompt 模板系统
+│       ├── 03_tools.py                 # 工具定义与使用
+│       ├── 04_chains_lcel.py           # LCEL 管道表达式
+│       ├── 05_memory.py                # 对话记忆系统
+│       ├── 06_rag.py                   # RAG 检索增强生成
+│       ├── 07_callbacks.py             # 回调系统与追踪
+│       ├── 08_streaming.py             # 流式输出
+│       ├── 09_agent_final.py           # ★ 综合验收 (v1 create_agent)
+│       ├── 10_check_pointer.py         # Checkpointer 对话记忆
+│       ├── 11_stream_memory.py         # 带记忆的 token 流
+│       └── 12_structured_output.py     # 结构化输出
 │
 └── practice/                           # ← 实践项目
     ├── README.md                       # 项目索引
     ├── aethermind/                     # AetherMind 智能体平台（Phase 1 已完成）
-    │   ├── docker-compose.yml
-    │   ├── README.md
-    │   ├── backend/  (FastAPI + DeepAgents + LangGraph)
-    │   └── frontend/ (Next.js + React + Tailwind)
     └── intentgate/                     # IntentGate 多通道卡片网关
-        └── ...
 ```
 
 ## 启动学习
 
 ```bash
-# 1. 进入学习目录
-cd d:\code\study\langchain\learn
+# 1. 进入 LangChain 练习目录
+cd c:\code\langchain\learn\langchain
 
 # 2. 安装依赖
 pip install -r requirements.txt
@@ -56,25 +56,31 @@ python 06_rag.py
 python 07_callbacks.py
 python 08_streaming.py
 python 09_agent_final.py
+python 10_check_pointer.py
+python 11_stream_memory.py
+python 12_structured_output.py
 ```
 
-## 9 个练习脚本速览
+## 练习脚本速览
 
 | 编号 | 文件 | 核心知识点 | 需 API |
 |------|------|-----------|:---:|
-| 01 | `01_chat_models.py` | `init_chat_model` 统一接口，支持 OpenAI / Anthropic / Google / Ollama 多 Provider 切换 | ✓ |
-| 02 | `02_prompt_templates.py` | ChatPromptTemplate / Few-shot prompting / MessagesPlaceholder / PipelinePrompt | 部分 |
-| 03 | `03_tools.py` | `@tool` 装饰器 / StructuredTool / `model.bind_tools()` 工具绑定 | 部分 |
-| 04 | `04_chains_lcel.py` | `\|` 管道操作符 / RunnableParallel 并行 / RunnablePassthrough 透传 / RunnableLambda 自定义函数 | ✓ |
-| 05 | `05_memory.py` | RunnableWithMessageHistory 历史管理 / SummaryMemory 摘要压缩 / trim_messages 智能裁剪 | 部分 |
-| 06 | `06_rag.py` | Document Loader → Text Splitter → Embeddings → VectorStore → Retriever → QA 完整链路 | ✓ |
-| 07 | `07_callbacks.py` | BaseCallbackHandler 自定义回调 / Token 计数 / LangSmith 全链路追踪 | ✓ |
-| 08 | `08_streaming.py` | `.stream()` / `.astream()` / `.astream_events()` / stream_mode 六种模式对比 | ✓ |
-| 09 | `09_agent_final.py` | **综合验收 (v1)**: `create_agent` + Checkpointer 记忆 + `stream_mode='updates'` | ✓ |
+| 01 | `langchain/01_chat_models.py` | `init_chat_model` 统一接口，支持 OpenAI / Anthropic / Google / Ollama 多 Provider 切换 | ✓ |
+| 02 | `langchain/02_prompt_templates.py` | ChatPromptTemplate / Few-shot prompting / MessagesPlaceholder / PipelinePrompt | 部分 |
+| 03 | `langchain/03_tools.py` | `@tool` 装饰器 / StructuredTool / `model.bind_tools()` 工具绑定 | 部分 |
+| 04 | `langchain/04_chains_lcel.py` | `\|` 管道操作符 / RunnableParallel 并行 / RunnablePassthrough 透传 / RunnableLambda 自定义函数 | ✓ |
+| 05 | `langchain/05_memory.py` | RunnableWithMessageHistory 历史管理 / SummaryMemory 摘要压缩 / trim_messages 智能裁剪 | 部分 |
+| 06 | `langchain/06_rag.py` | Document Loader → Text Splitter → Embeddings → VectorStore → Retriever → QA 完整链路 | ✓ |
+| 07 | `langchain/07_callbacks.py` | BaseCallbackHandler 自定义回调 / Token 计数 / LangSmith 全链路追踪 | ✓ |
+| 08 | `langchain/08_streaming.py` | `.stream()` / `.astream()` / `.astream_events()` / stream_mode 六种模式对比 | ✓ |
+| 09 | `langchain/09_agent_final.py` | **综合验收 (v1)**: `create_agent` + Checkpointer 记忆 + `stream_mode='updates'` | ✓ |
+| 10 | `langchain/10_check_pointer.py` | `InMemorySaver` / `SqliteSaver`、`get_state` / `update_state`、摘要写回、历史裁剪 | 部分 |
+| 11 | `langchain/11_stream_memory.py` | Agent + checkpointer + `stream_mode='messages'` 逐 token 流式多轮记忆 | ✓ |
+| 12 | `langchain/12_structured_output.py` | `with_structured_output` / `response_format` / Pydantic / ToolStrategy | ✓ |
 
 ## 学习目标
 
-完成阶段一全部 9 个练习后，你将掌握 LangChain v1 的核心抽象：
+完成阶段一全部练习后，你将掌握 LangChain v1 的核心抽象：
 
 - **Chat Models** — 用统一的 `init_chat_model` 接口调用任意 LLM（OpenAI/Claude/Gemini/Ollama）
 - **Prompt Templates** — 结构化提示模板、Few-shot 少样本引导、对话历史动态注入

@@ -34,17 +34,22 @@
 
 ### 练习脚本索引
 
+练习代码位于 `learn/langchain/` 目录，运行前请 `cd learn/langchain`。
+
 | 编号 | 文件 | 内容 |
 |------|------|------|
-| 01 | `01_chat_models.py` | 多 Provider 模型切换与基本对话 |
-| 02 | `02_prompt_templates.py` | ChatPromptTemplate / Few-shot / MessagesPlaceholder |
-| 03 | `03_tools.py` | @tool 装饰器 / StructuredTool / 多工具组合 |
-| 04 | `04_chains_lcel.py` | LCEL / RunnableSequence / RunnableParallel |
-| 05 | `05_memory.py` | ConversationBufferMemory / SummaryMemory |
-| 06 | `06_rag.py` | Document Loader → Splitter → Embeddings → VectorStore → QA |
-| 07 | `07_callbacks.py` | 自定义 Callback / LangSmith 追踪 |
-| 08 | `08_streaming.py` | token-level streaming / astream_events |
-| 09 | `09_agent_final.py` | 综合验收：RAG + Tool Use 单智能体 |
+| 01 | `langchain/01_chat_models.py` | 多 Provider 模型切换与基本对话 |
+| 02 | `langchain/02_prompt_templates.py` | ChatPromptTemplate / Few-shot / MessagesPlaceholder |
+| 03 | `langchain/03_tools.py` | @tool 装饰器 / StructuredTool / 多工具组合 |
+| 04 | `langchain/04_chains_lcel.py` | LCEL / RunnableSequence / RunnableParallel |
+| 05 | `langchain/05_memory.py` | ConversationBufferMemory / SummaryMemory |
+| 06 | `langchain/06_rag.py` | Document Loader → Splitter → Embeddings → VectorStore → QA |
+| 07 | `langchain/07_callbacks.py` | 自定义 Callback / LangSmith 追踪 |
+| 08 | `langchain/08_streaming.py` | token-level streaming / astream_events |
+| 09 | `langchain/09_agent_final.py` | 综合验收：RAG + Tool Use 单智能体 |
+| 10 | `langchain/10_check_pointer.py` | Checkpointer 记忆、`update_state`、Sqlite 持久化 |
+| 11 | `langchain/11_stream_memory.py` | 带记忆的 token 级流式 (`stream_mode='messages'`) |
+| 12 | `langchain/12_structured_output.py` | 结构化输出 (Pydantic / `response_format` / ToolStrategy) |
 
 ---
 
